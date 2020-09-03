@@ -2,38 +2,102 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\User\UserRepository;
 use Illuminate\Http\Request;
+use App\User;
+use Exception;
+use App\Http\Requests\UserRequest;
+use App\Services\UserService;
 
-
-class UserController extends Controller
+class UserController
 {
-    protected $userRepository;
+    protected $userService;
 
-    public function __construct(UserRepository $userRepository)
+    /**
+     * PostController Constructor
+     *
+     * @param UserService $userService
+     *
+     */
+    public function __construct(UserService $userService)
     {
-        $this->userRepository = $userRepository;
+        $this->userService = $userService;
     }
+    public function index(){
 
-    public function index()
-    {
-        $user = $this->userRepository->getAll();
+        $user = $this->userService->index();
 
         return view('admin.User.index', compact('user'));
     }
 
+    public function edit()
+    {
+        return view('admin.User.edit');
+    }
+
+    public function add()
+    {
+        return view('admin.User.create');
+    }
+
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request ->only([
+           'name',
+           'email',
+        ]);
+        $result['data'] = $this->userService->saveUserData($data);
+        return redirect()->route('admin.User.index');
 
-        $post = $this->userRepository->create($data);
+    }
 
-        return view('admin.User.index', compact('post'));
+    public function update(Request $request, $id)
+    {
+        $data = $request->only([
+            'name',
+            'email'
+        ]);
+        $user = $this->userService->updateUser($data, $id);
+        return view('admin.User.index', compact('user'));
+
     }
 
     public function destroy($id)
     {
-        $this->userRepository->delete($id);
-        return view('admin.User.index');
+
+        $this->userService->deleteById($id);
+        return back();
     }
+
+
+//    public function create(UserRequest $request)
+//    {
+//
+//        $this->userservice->create($request);
+//
+//        return back()->with(['status'=>'User created successfully']);
+//    }
+//
+//    public function read($id)
+//    {
+//
+//        $posts = $this->userservice->read($id);
+//
+//        return view('edit', compact('posts'));
+//
+//    }
+//
+//    public function update(UserRequest $request, $id)
+//    {
+//
+//        $user = $this->userservice->update($request, $id);
+//
+//        return redirect()->back()->with('status', 'Post has been updated succesfully');
+//    }
+//
+//    public function delete($id)
+//    {
+//        $this->userservice->delete($id);
+//
+//        return back()->with(['status'=>'Deleted successfully']);
+//    }
 }

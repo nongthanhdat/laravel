@@ -23,6 +23,7 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+
         <!-- /.content-header -->
 
         <!-- Main content -->
@@ -30,14 +31,28 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-                        <form action="{{route('store-')}}" method="post">
+                        <form action="{{route('update-user',['id'=>$u->id])}}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label>Tên danh mục</label>
-                                <input type="" class="form-control" name="namecategory" placeholder="Nhập tên danh mục">
+                                <label>Tên</label>
+                                <input type="text" name="name" class="form-control" placeholder="Nhập tên" value="{{$u->name}}">
                             </div>
-                            <button type="submit" class="btn btn-primary">Create Category</button>
-                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" name="email" class="form-control" placeholder="Nhập email" value="{{$u->email}}">
+                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleFormControlSelect1">Role</label>--}}
+{{--                                <select class="form-control" name="role">--}}
+{{--                                    <option>User</option>--}}
+{{--                                    <option>Admin</option>--}}
+{{--                                    <option>Librarian</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+                            <button type="submit" class="btn btn-primary">Update user</button>
+                            <form action="#">
+                                <button type="submit" class="btn btn-default">Cancel</button>
+                            </form>
                         </form>
                     </div>
                 </div>

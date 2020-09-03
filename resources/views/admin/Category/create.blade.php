@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-                        <form action="{{route('store-category')}}" method="post">
+                        <form action="{{route('create-category')}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label>Tên danh mục</label>

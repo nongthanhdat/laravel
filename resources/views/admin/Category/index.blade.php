@@ -28,7 +28,7 @@
                 <!-- .row -->
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{route('create-category')}}" class="btn btn-success float-right">Add Category</a>
+                        <a href="{{route('add-category')}}" class="btn btn-success float-right">Add Category</a>
                     </div>
                     <div class="col-md-12">
                         <table class="table table-bordered">
@@ -37,12 +37,12 @@
                                 <th>Tên danh mục</th>
                                 <th>Action</th>
                             </tr>
-                            @foreach($categories as $c)
+                            @foreach($cat as $c)
                                 <tr>
                                     <td>{{ $c->id }}</td>
                                     <td>{{ $c->name }}</td>
                                     <td>
-                                        <a href="" class="btn btn-default">Edit</a>
+                                        <a href="{{route('edit-category')}}" class="btn btn-default">Edit</a>
                                         <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-default">Delete</a>
                                         <form action="" method="post">
                                             @method('DELETE')

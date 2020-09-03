@@ -36,6 +36,7 @@
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                             @foreach($user as $u)
@@ -43,8 +44,9 @@
                                     <td>{{ $u->id }}</td>
                                     <td>{{ $u->name }}</td>
                                     <td>{{ $u->email }}</td>
+                                    <td>{{ $u->role }}</td>
                                     <td>
-                                        <a href="" class="btn btn-default">Edit</a>
+                                        <a href="{{route('edit-user')}}" class="btn btn-default">Edit</a>
                                         <a href="{{route('delete-user', ['id' => $u->id]) }}" class="btn btn-default">Delete</a>
                                     </td>
                                 </tr>

@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Home</h1>
+                        <h1 class="m-0 text-dark">Create user</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -34,13 +34,13 @@
                             @csrf
                             <div class="form-group">
                                 <label>Tên</label>
-                                <input type="" class="form-control" name="nameuser" placeholder="Nhập tên">
+                                <input type="" class="form-control" name="name" placeholder="Nhập tên">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="" class="form-control" name="nameuser" placeholder="Nhập email">
+                                <input type="" class="form-control" name="email" placeholder="Nhập email">
                             </div>
-                            <button type="submit" class="btn btn-primary">Create User</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <button type="submit" class="btn btn-default">Cancel</button>
                         </form>
                     </div>

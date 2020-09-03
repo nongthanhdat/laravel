@@ -28,18 +28,26 @@ Route::prefix('category')->group(function () {
     'as' => 'list-category',
         'uses' => 'CategoryController@index'
     ]);
+    Route::get('/add', [
+        'as' => 'add-category',
+        'uses' => 'CategoryController@add'
+    ]);
     Route::get('/create', [
         'as' => 'create-category',
         'uses' => 'CategoryController@create'
     ]);
-    Route::post('/store',[
-        'as' => 'store-category',
-        'uses' => 'CategoryController@store'
+    Route::get('/edit',[
+        'as' => 'edit-category',
+        'uses' => 'CategoryController@edit'
+    ]);
+    Route::get('/update',[
+        'as' => 'update-category',
+        'uses' => 'CategoryController@update'
     ]);
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('', [
+    Route::any('', [
         'as' => 'list-user',
         'uses' => 'UserController@index'
     ]);
@@ -49,11 +57,19 @@ Route::prefix('user')->group(function () {
     ]);
     Route::get('/create', [
         'as' => 'create-user',
-        'uses' => 'UserController@create'
+        'uses' => 'UserController@add'
     ]);
     Route::post('/store', [
         'as' => 'store-user',
         'uses' => 'UserController@store'
+    ]);
+    Route::get('/edit', [
+        'as' => 'edit-user',
+        'uses' => 'UserController@edit'
+    ]);
+    Route::post('/update/{id}', [
+        'as' => 'update-user',
+        'uses' => 'UserController@update'
     ]);
 });
 
